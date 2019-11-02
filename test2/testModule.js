@@ -1,6 +1,8 @@
 "use strict";
 
 let log = require('../log');
-let myadd = require('./myutil');
+let myutil = require('./myutil');
 
-log.info('3+5=' + myadd.add(3,5));
+log.info('3+5=' + myutil.add(3,5));
+
+log.info('3-5=' + myutil.minus(3,5));
