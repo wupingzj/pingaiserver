@@ -1,40 +1,19 @@
-const http = require('http');
+// https://socket.io/get-started/chat/
+
+var app = require('express')();
+var http = require('http').createServer(app);
 
 const hostname = '127.0.0.1';
 const port = 3000;
-var count1 = 0;
-var count2 = 0;
 
-const server = http.createServer((req, res) => {
-  if (req.url == '/') {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-
-    count1++;
-    res.end(`${count1}.another server`);
-  } else if (req.url == '/heartbeat') {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-
-    count1++;
-    res.end(`${count1}. The server is healthy, fast and even-driven`);
-  }
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/resource/index.html');
+}).get('/heartbeat', (req, res) => {
+  // res.send('<h1>Hello world</h1>');
+  // res.status(401).end();
+  res.end(`The server is healthy, fast and even-driven`);
 });
 
-server.listen(port, hostname, () => {
-  count1++;
-  console.log(`${count1}.Server running at http://${hostname}:${port}/`);
+http.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
-
-
-const server2 = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-type', 'text/plain');
-  count2++;
-  res.end(`${count2}.another server`);
-});
-server2.listen(3001, 'localhost', () => {
-  console.log(`Another server running at http://${hostname}:30001`);
-});
-
-console.log('started two servers');
