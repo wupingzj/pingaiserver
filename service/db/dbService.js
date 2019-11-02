@@ -1,12 +1,14 @@
 var MongoClient = require('mongodb').MongoClient;
-
+const dbName = 'smartbot';
+const intentCollection = 'intent';
 
 // {useUnifiedTopology: true}
-MongoClient.connect("mongodb://localhost:27017/smartbot", (err, database) => {
-    var db = database.db("smartbot");
-    // var collection = new Mongo.Collection("intent");
-    console.log("I am in");
-    db.collection('intent', { useUnifiedTopology: true }, function (err, collection) {
+MongoClient.connect("mongodb://localhost:27017", (err, client) => {
+    var db = client.db(dbName);
+    db.collection(intentCollection, { useUnifiedTopology: true }, function (err, collection) {
+
+        // node:90429) DeprecationWarning: collection.insert is deprecated. Use insertOne, insertMany or bulkWrite instead.
+        // (node:90429) DeprecationWarning: collection.count is deprecated, and will be removed in a future version. Use Collection.countDocuments or Collection.estimatedDocumentCount instead
 
         collection.insert({ id: 1, name: 'DomesticInternation', data: {} });
         collection.insert({ id: 2, name: 'CabinType', data: { CabinType: "First Class" } });
@@ -18,4 +20,31 @@ MongoClient.connect("mongodb://localhost:27017/smartbot", (err, database) => {
             console.log('Total Rows: ' + count);
         });
     });
+});
+
+
+MongoClient.connect("mongodb://localhost:27017/", function (err, client) {
+    var db = client.db(dbName);
+    db.collection(intentCollection, function (err, collection) {
+
+        collection.update({ id: 1 }, { $set: { firstName: 'James', lastName: 'Gosling' } }, { w: 1 },
+            function (err, result) {
+                if (err) throw err;
+                console.log('Document Updated Successfully');
+            });
+
+        collection.remove({ id: 2 }, { w: 1 }, function (err, result) {
+
+            if (err) throw err;
+
+            console.log('Document Removed Successfully');
+        });
+
+        collection.find().toArray(function (err, items) {
+            if (err) throw err;
+            console.log(items);
+        });
+
+    });
+
 });
