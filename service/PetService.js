@@ -8,8 +8,8 @@
  * body Pet Pet object that needs to be added to the store
  * no response value expected for this operation
  **/
-exports.addPet = function(body) {
-  return new Promise(function(resolve, reject) {
+exports.addPet = function (body) {
+  return new Promise(function (resolve, reject) {
     resolve();
   });
 }
@@ -23,8 +23,8 @@ exports.addPet = function(body) {
  * api_key String  (optional)
  * no response value expected for this operation
  **/
-exports.deletePet = function(petId,api_key) {
-  return new Promise(function(resolve, reject) {
+exports.deletePet = function (petId, api_key) {
+  return new Promise(function (resolve, reject) {
     resolve();
   });
 }
@@ -37,42 +37,42 @@ exports.deletePet = function(petId,api_key) {
  * status List Status values that need to be considered for filter
  * returns List
  **/
-exports.findPetsByStatus = function(status) {
-  return new Promise(function(resolve, reject) {
+exports.findPetsByStatus = function (status) {
+  return new Promise(function (resolve, reject) {
     var examples = {};
-    examples['application/json'] = [ {
-  "photoUrls" : [ "photoUrls", "photoUrls" ],
-  "name" : "doggie",
-  "id" : 0,
-  "category" : {
-    "name" : "name",
-    "id" : 6
-  },
-  "tags" : [ {
-    "name" : "name",
-    "id" : 1
-  }, {
-    "name" : "name",
-    "id" : 1
-  } ],
-  "status" : "available"
-}, {
-  "photoUrls" : [ "photoUrls", "photoUrls" ],
-  "name" : "doggie",
-  "id" : 0,
-  "category" : {
-    "name" : "name",
-    "id" : 6
-  },
-  "tags" : [ {
-    "name" : "name",
-    "id" : 1
-  }, {
-    "name" : "name",
-    "id" : 1
-  } ],
-  "status" : "available"
-} ];
+    examples['application/json'] = [{
+      "photoUrls": ["photoUrls", "photoUrls"],
+      "name": "doggie",
+      "id": 0,
+      "category": {
+        "name": "name",
+        "id": 6
+      },
+      "tags": [{
+        "name": "name",
+        "id": 1
+      }, {
+        "name": "name",
+        "id": 1
+      }],
+      "status": "available"
+    }, {
+      "photoUrls": ["photoUrls", "photoUrls"],
+      "name": "doggie",
+      "id": 0,
+      "category": {
+        "name": "name",
+        "id": 6
+      },
+      "tags": [{
+        "name": "name",
+        "id": 1
+      }, {
+        "name": "name",
+        "id": 1
+      }],
+      "status": "available"
+    }];
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -89,42 +89,42 @@ exports.findPetsByStatus = function(status) {
  * tags List Tags to filter by
  * returns List
  **/
-exports.findPetsByTags = function(tags) {
-  return new Promise(function(resolve, reject) {
+exports.findPetsByTags = function (tags) {
+  return new Promise(function (resolve, reject) {
     var examples = {};
-    examples['application/json'] = [ {
-  "photoUrls" : [ "photoUrls", "photoUrls" ],
-  "name" : "doggie",
-  "id" : 0,
-  "category" : {
-    "name" : "name",
-    "id" : 6
-  },
-  "tags" : [ {
-    "name" : "name",
-    "id" : 1
-  }, {
-    "name" : "name",
-    "id" : 1
-  } ],
-  "status" : "available"
-}, {
-  "photoUrls" : [ "photoUrls", "photoUrls" ],
-  "name" : "doggie",
-  "id" : 0,
-  "category" : {
-    "name" : "name",
-    "id" : 6
-  },
-  "tags" : [ {
-    "name" : "name",
-    "id" : 1
-  }, {
-    "name" : "name",
-    "id" : 1
-  } ],
-  "status" : "available"
-} ];
+    examples['application/json'] = [{
+      "photoUrls": ["photoUrls", "photoUrls"],
+      "name": "doggie",
+      "id": 0,
+      "category": {
+        "name": "name",
+        "id": 6
+      },
+      "tags": [{
+        "name": "name",
+        "id": 1
+      }, {
+        "name": "name",
+        "id": 1
+      }],
+      "status": "available"
+    }, {
+      "photoUrls": ["photoUrls", "photoUrls"],
+      "name": "doggie",
+      "id": 0,
+      "category": {
+        "name": "name",
+        "id": 6
+      },
+      "tags": [{
+        "name": "name",
+        "id": 1
+      }, {
+        "name": "name",
+        "id": 1
+      }],
+      "status": "available"
+    }];
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -141,26 +141,26 @@ exports.findPetsByTags = function(tags) {
  * petId Long ID of pet to return
  * returns Pet
  **/
-exports.getPetById = function(petId) {
-  return new Promise(function(resolve, reject) {
+exports.getPetById = function (petId) {
+  return new Promise(function (resolve, reject) {
     var examples = {};
     examples['application/json'] = {
-  "photoUrls" : [ "photoUrls", "photoUrls" ],
-  "name" : "doggie",
-  "id" : 0,
-  "category" : {
-    "name" : "name",
-    "id" : 6
-  },
-  "tags" : [ {
-    "name" : "name",
-    "id" : 1
-  }, {
-    "name" : "name",
-    "id" : 1
-  } ],
-  "status" : "available"
-};
+      "photoUrls": ["photoUrls", "photoUrls"],
+      "name": "doggie",
+      "id": 0,
+      "category": {
+        "name": "name",
+        "id": 6
+      },
+      "tags": [{
+        "name": "name",
+        "id": 1
+      }, {
+        "name": "name",
+        "id": 1
+      }],
+      "status": "available"
+    };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -177,8 +177,8 @@ exports.getPetById = function(petId) {
  * body Pet Pet object that needs to be added to the store
  * no response value expected for this operation
  **/
-exports.updatePet = function(body) {
-  return new Promise(function(resolve, reject) {
+exports.updatePet = function (body) {
+  return new Promise(function (resolve, reject) {
     resolve();
   });
 }
@@ -193,8 +193,8 @@ exports.updatePet = function(body) {
  * status String Updated status of the pet (optional)
  * no response value expected for this operation
  **/
-exports.updatePetWithForm = function(petId,name,status) {
-  return new Promise(function(resolve, reject) {
+exports.updatePetWithForm = function (petId, name, status) {
+  return new Promise(function (resolve, reject) {
     resolve();
   });
 }
@@ -209,14 +209,14 @@ exports.updatePetWithForm = function(petId,name,status) {
  * file File file to upload (optional)
  * returns ApiResponse
  **/
-exports.uploadFile = function(petId,additionalMetadata,file) {
-  return new Promise(function(resolve, reject) {
+exports.uploadFile = function (petId, additionalMetadata, file) {
+  return new Promise(function (resolve, reject) {
     var examples = {};
     examples['application/json'] = {
-  "code" : 0,
-  "type" : "type",
-  "message" : "message"
-};
+      "code": 0,
+      "type": "type",
+      "message": "message"
+    };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
