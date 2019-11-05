@@ -1,4 +1,4 @@
-const MongoClient = require("mongodb").MongoClient;
+import { MongoClient } from "mongodb";
 const dbName = "smartbot";
 const intentCollection = "intent";
 

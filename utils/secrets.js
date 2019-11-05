@@ -14,4 +14,4 @@ const secrets = {
 };
 
 
-module.exports = secrets
+module.exports = secrets;

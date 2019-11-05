@@ -1,3 +1,0 @@
-var myint = require('./myInterface');
-
-

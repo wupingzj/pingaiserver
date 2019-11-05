@@ -1,13 +1,13 @@
-var log = {
+const log = {
     info: function (info) { 
-        console.log('Info: ' + info);
+        console.log("Info: " + info);
     },
     warning:function (warning) { 
-        console.log('Warning: ' + warning);
+        console.log("Warning: " + warning);
     },
     error:function (error) { 
-        console.log('Error: ' + error);
+        console.log("Error: " + error);
     }
 };
 
-module.exports = log
+module.exports = log;
