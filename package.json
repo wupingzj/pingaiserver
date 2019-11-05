@@ -9,6 +9,7 @@
   "author": "ping wu",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.7.1",
     "connect-mongo": "^3.1.2",
     "dotenv": "^8.2.0",
