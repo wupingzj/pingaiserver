@@ -1,8 +1,8 @@
 
+import mongoose from "mongoose";
 // elegant mongodb object modeling for node.js
 // https://mongoosejs.com/docs/index.html
-// import { connection, connect, model } from "mongoose";
-import mongoose from "mongoose";
+
 
 const connection = mongoose.connection;
 const connect = mongoose.connect;

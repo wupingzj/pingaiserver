@@ -18,6 +18,7 @@ import * as homeController from "./controllers/home";
 import * as userController from "./controllers/user";
 import * as apiController from "./controllers/api";
 import * as contactController from "./controllers/contact";
+import * as intentController from "./controllers/intent";
 
 
 // API keys and Passport configuration
@@ -33,6 +34,7 @@ mongoose.Promise = bluebird;
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true } ).then(
     () => { /** ready to use. The `mongoose.connect()` promise resolves to undefined. */ },
 ).catch(err => {
+    // tslint:disable-next-line: no-console
     console.log("MongoDB connection error. Please make sure MongoDB is running. " + err);
     // process.exit();
 });
@@ -71,7 +73,7 @@ app.use((req, res, next) => {
     !req.path.match(/\./)) {
         req.session.returnTo = req.path;
     } else if (req.user &&
-    req.path == "/account") {
+    req.path === "/account") {
         req.session.returnTo = req.path;
     }
     next();
@@ -101,6 +103,9 @@ app.post("/account/profile", passportConfig.isAuthenticated, userController.post
 app.post("/account/password", passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post("/account/delete", passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get("/account/unlink/:provider", passportConfig.isAuthenticated, userController.getOauthUnlink);
+
+app.get("/intent", intentController.getIntent);
+app.get("/intents", intentController.listIntents);
 
 /**
  * API examples routes.
