@@ -19,6 +19,7 @@ import * as userController from "./controllers/user";
 import * as apiController from "./controllers/api";
 import * as contactController from "./controllers/contact";
 import * as intentController from "./controllers/intent";
+import * as errorController from "./controllers/error";
 
 
 // API keys and Passport configuration
@@ -106,6 +107,7 @@ app.get("/account/unlink/:provider", passportConfig.isAuthenticated, userControl
 
 app.get("/intent", intentController.getIntent);
 app.get("/intents", intentController.listIntents);
+app.get("/error", errorController.handleError);
 
 /**
  * API examples routes.
