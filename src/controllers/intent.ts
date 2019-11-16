@@ -12,13 +12,6 @@ export const getIntent = async (req: Request, res: Response, next: NextFunction)
     await sanitize("email").normalizeEmail({ gmail_remove_dots: false }).run(req);
 
     const errors = validationResult(req);
-
-    if (!errors.isEmpty()) {
-        req.flash("errors", errors.array());
-        return res.redirect("/signup");
-    }
-
-    const errors = validationResult(req);
     if (!errors.isEmpty()) {
         req.flash("errors", errors.array());
         return res.redirect("/error");
@@ -30,27 +23,76 @@ export const getIntent = async (req: Request, res: Response, next: NextFunction)
 };
 
 export const listIntents = (req: Request, res: Response, next: NextFunction) => {
-    Intent.findOne({name: name}, (err, intent: any) => {
-        if (err) {
-            console.log("0. Failed to get a user");
-            req.flash("errors", err);
-            // return err;
-        }
+    // Intent.findOne({name: name}, (err, intent: any) => {
+    //     if (err) {
+    //         console.log("0. Failed to get a user");
+    //         req.flash("errors", err);
+    //         // return err;
+    //     }
 
-        if (!intent) {
-            console.log("1. Failed to get a user");
-            req.flash("errors", "1. Failed to get a user");
-        }
-    });
+    //     if (!intent) {
+    //         console.log("1. Failed to get a user");
+    //         req.flash("errors", "1. Failed to get a user");
+    //     }
+    // });
 
 
     res.end(JSON.stringify(
-        [{
-            name: "welcome intent"
-        },
-        {
-            name: "Depature Airport"
-        }]
+        [
+            {
+                "name": "Welcome",
+                "phrases": [
+                    "hi",
+                    "Hi there",
+                    "hello"
+                ]
+            },
+            {
+                "name": "Book Hotel",
+                "phrases": [
+                    "I would like to book a hotel for my family",
+                    "Check out hotel in Sydney",
+                    "Can you help me with hotel booking?"
+                ]
+            },
+            {
+                "name": "Arrival City",
+                "phrases": [
+                    "I will arrive at Sydney",
+                    "Sydney please",
+                    "visit Brisbane"
+                ]
+            },
+            {
+                "name": "Arrival Date",
+                "phrases": [
+                    "I am arriving on 15 Oct",
+                    "My family will get there on 15 Oct",
+                    "15th Oct",
+                    "from Brisbane on 15 October"
+                ]
+            },
+            {
+                "name": "Depature Date",
+                "phrases": [
+                    "I will be leaving on 18th September",
+                    "I am going from 15 Oct",
+                    "15th Oct",
+                    "from Brisbane on 15 October"
+
+                ]
+            },
+            {
+                "name": "Budget",
+                "phrases": [
+                    "5 star is good for my family",
+                    "My budget is a bit tight",
+                    "$200-300 would be great",
+                    "I am on budget",
+                    "luxury please"
+                ]
+            }
+        ]
     ));
 };
 

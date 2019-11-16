@@ -24,9 +24,12 @@ import * as errorController from "./controllers/error";
 
 // API keys and Passport configuration
 import * as passportConfig from "./config/passport";
+import cors = require("cors");
 
 // Create Express server
 const app = express();
+
+app.use(cors());
 
 // Connect to MongoDB
 const mongoUrl = MONGODB_URI;
